@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+  <title>Exam --- Results</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<style>
+		.rounded {border-radius: 40px;}	
+	</style>
+</head>
+<body>
+
+
+<section class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">
+ <h1 class="text-center text-danger">Exam results</h1> </div>
+
+  <ul>
+{% for answer in answers %}
+<li>
+<h2>{{answer.task.topic}}</h2>
+<p>{{answer.task.content}}</p>
+<br>
+
+{% if answer.content == answer.task.correct_answer %}
+Your answer: <br>
+<p>{{answer.content}}</p>
+is correct answer! <br>
+
+{% else %}
+
+Your answer: <br>
+<p style="color:red;">{{answer.content}}</p>
+is NOT a correct answer! <br>
+Correct answer is:<br>
+<p>{{answer.task.correct_answer}}</p>
+<br>
+
+{% endif %}
+
+</li>
+{% endfor %}
+  </ul>
+
+</section>
+
+</body>
+</html>

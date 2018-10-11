@@ -9,7 +9,8 @@ class Task(models.Model):
 
 class Answer(models.Model):
     content = models.TextField()
-    name = models.ForeignKey(
+    user = models.CharField(max_length = 100, null = True)
+    task = models.ForeignKey(
         'Task',
         on_delete=models.CASCADE,
     )

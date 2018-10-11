@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+  <title>Math exam</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<style>
+		.rounded {border-radius: 40px;}	
+	</style>
+</head>
+<body>
+
+<section class="container-fluid">
+ <div class="jumbotron jumbotron-fluid">  
+	<h1 class="text-center text-danger">Please chose your level from {{}} to {{}} </h1> 
+ </div>
+<br>
+
+
+<form action="/exam/result/" method="POST">
+Username: <input type="text" name="{{user}}"><br>
+  <ul>
+{% for task in all_tasks %}
+<li>
+<h2>{{task.topic}}</h2>
+<p>{{task.content}}</p>
+  Answer: <input type="text" name="task-{{task.id}}"><br>
+
+</li>
+{% endfor %}
+  <input type="submit" value="Submit">
+  </ul>
+   {% csrf_token %}
+</form>
+
+
+</section>
+
+</body>
+</html>
